@@ -14,6 +14,7 @@ app.engine('html', require('ejs').renderFile);
 app.get('/register', (req, res) => res.render('register'));
 app.get('/login', (req, res) => res.render('login'));
 app.get('/index', (req, res) => res.render('index'));
+app.get('/home', (req, res) => res.render('home'));
 
 app.use('/auth', authRoutes);
 

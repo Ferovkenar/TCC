@@ -4,7 +4,8 @@ const bcrypt = require('bcryptjs');
 exports.register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
-        await User.create({ username, email, password });
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await User.create({ username, email, password: hashedPassword });
         res.redirect('/login');
     } catch (error) {
         res.status(500).send('Erro no servidor');
@@ -16,8 +17,9 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
         const [user] = await User.findByEmail(email);
         
-        if (user && await bcrypt.compare(password, user[0].password)) {
-            res.redirect('/index');
+        if (user && await bcrypt.compare(password, user.password)) {
+            // Redirecionar para a página home
+            res.redirect('/home');
         } else {
             res.status(401).send('Credenciais inválidas');
         }

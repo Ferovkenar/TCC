@@ -8,13 +8,15 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static('public'));
+
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
+// Rotas para registro, login e home
 app.get('/register', (req, res) => res.render('register'));
 app.get('/login', (req, res) => res.render('login'));
-app.get('/index', (req, res) => res.render('index'));
 app.get('/home', (req, res) => res.render('home'));
+app.get('/index', (req, res) => res.render('index'));
 
 app.use('/auth', authRoutes);
 

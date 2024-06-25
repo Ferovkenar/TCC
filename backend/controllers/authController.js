@@ -18,7 +18,6 @@ exports.login = async (req, res) => {
         const [user] = await User.findByEmail(email);
         
         if (user && await bcrypt.compare(password, user.password)) {
-            // Redirecionar para a página home
             res.redirect('/home');
         } else {
             res.status(401).send('Credenciais inválidas');

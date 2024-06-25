@@ -11,6 +11,5 @@ class User {
         const [rows] = await db.execute(query, [email]);
         return rows;
     }
-}
 
 module.exports = User;

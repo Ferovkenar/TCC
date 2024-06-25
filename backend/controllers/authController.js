@@ -11,6 +11,7 @@ exports.register = async (req, res) => {
         res.status(500).send('Erro no servidor');
     }
 };
+
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -19,10 +20,4 @@ exports.login = async (req, res) => {
         if (user && await bcrypt.compare(password, user.password)) {
             // Redirecionar para a página home
             res.redirect('/home');
-        } else {
-            res.status(401).send('Credenciais inválidas');
         }
-    } catch (error) {
-        res.status(500).send('Erro no servidor');
-    }
-};

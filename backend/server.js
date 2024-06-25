@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const authRoutes = require('/routes/authRoutes');
+const authRoutes = require('./routes/authRoutes.js');
 
 const app = express();
 

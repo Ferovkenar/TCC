@@ -21,3 +21,5 @@ exports.login = async (req, res) => {
             // Redirecionar para a página home
             res.redirect('/home');
         }
+    }
+};
